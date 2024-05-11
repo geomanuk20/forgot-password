@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign up</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/sign.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+    <div id="div4" class="container mt-5 " id="signup1" >
+        <h1 id="div">signup</h1>
+        <form method="post" action="/signup">
+          <div id="div3" class="form-group">
+            <label id="div3"  for="name">Username:</label>
+            <input  type="text"  class="form-control" id="name"  name="username" placeholder="username" required minlength="3">
+          </div>
+          <div id="div3" class="form-group">
+           <label id="div3" for="password">Password:</label>
+            <input id="div3" type="password" class="form-control" id="password" name="password" placeholder="password" required minlength="1">
+          </div>
+          <div>
+          <label id="div3" for="password">Re-enter:</label>
+            <input id="div3" type="password" class="form-control" id="repassword" name="repassword" placeholder="password" required >
+          </div>
+          <br>
+          <p id="div3"><input type="checkbox" id="cb" style="background-color: blue;"> I accept the Term & privacy policy</p>
+          <button type="submit" class="btn btn-primary" id="log" action="/home">signup</button>
+        </form>
+        <form method="post" action="/login">
+          <a style="text-decoration: none;" href="/login">all ready have a account?</a>
+        </form>
+      </div>
+</body>
+<script>
+  // prevent default method
+  const log = document.getElementById('log');
+  const cb = document.getElementById('cb') 
+  const pass = document.getElementById('password')
+  const repass = document.getElementById('repassword')
+
+  log.addEventListener('click',function(e){
+    if(!cb.checked){
+      e.preventDefault();
+    }else if (!pass.checked) {
+      e.preventDefault()
+    }else if (!repass.checked){
+      e.preventDefault()
+    }else{
+      $('#log').on('click',function(){
+  Swal.fire({
+    title: "Good job!",
+    text: "You clicked the button!",
+    icon: "success",
+    showConfirmButton: false,
+    timer:2000
+
+  }).then(()=>{
+    window.location.href = 'login'
+  })
+})
+    }
+  })
+
+</script>
+</html>
+<!--
+$('#log').on('click',function(){
+  Swal.fire({
+    title: "Good job!",
+    text: "You clicked the button!",
+    icon: "success"
+  });
+})
+-->
